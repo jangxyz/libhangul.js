@@ -11,14 +11,14 @@ OPTIONS = -s EXPORTED_FUNCTIONS="['_hangul_is_choseong','_hangul_is_jungseong','
 UGLIFY=./node_modules/.bin/uglifyjs
 
 
-hangul.js: libhangul $(SRC) pre.js post.js
+hangul.js: libhangul $(SRC) src/pre.js src/post.js
 	$(CC) $(SRC) \
 		--pre-js  src/pre.js \
 		--post-js src/post.js \
 		-o hangul.js \
 		$(INCLUDE) $(DEFS) $(OPTIONS)
 
-hangul.min.js: libhangul $(SRC) pre.js post.js
+hangul.min.js: libhangul $(SRC) src/pre.js src/post.js
 	$(CC) $(SRC) \
 		--pre-js  src/pre.js \
 		--post-js src/post.js \
@@ -37,3 +37,4 @@ libhangul/config.h:
 
 clean:
 	cd libhangul && make clean && make distclean
+

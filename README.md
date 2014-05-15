@@ -14,6 +14,9 @@
 	- 몇가지 간단한 유니코드 한글 처리 루틴을 제공합니다.
 
 
+현재는 다국어지원(NLS)과 한자 기능은 지원하지 않습니다.
+
+
 ## 빌드 방법
 
 먼저 libhangul을 설정한 후, emconfigure과 emcc를 이용해서 빌드합니다.
@@ -23,7 +26,7 @@
 	git submodule init
 	git submodule update
 
-2. libhangul 설정하기(현재는 NLS는 지원하지 않습니다)
+2. libhangul 설정하기
 
 	cd libhangul
 	./autogen
