@@ -1,0 +1,27 @@
+{
+  "name": "libhangul.js",
+  "version": "0.1.0",
+  "description": "libhangul javascript port",
+  "main": "hangul.js",
+  "scripts": {
+    //"test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jangxyz/libhangul.js.git"
+  },
+  "keywords": [
+    "libhangul",
+    "hangul",
+    "korean"
+  ],
+  "author": "Kim, Jang-hwan",
+  "license": "LGPL",
+  "bugs": {
+    "url": "https://github.com/jangxyz/libhangul.js/issues"
+  },
+  "homepage": "https://github.com/jangxyz/libhangul.js",
+  "devDependencies": {
+    "uglify-js": "^2.4.13"
+  }
+}

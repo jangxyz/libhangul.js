@@ -13534,16 +13534,19 @@ var hangul = {
     },
 
     //HangulInputContext* hangul_ic_new(const char* keyboard);
+    //bool hangul_ic_process(HangulInputContext *hic, int ascii);
+    //void hangul_ic_delete(HangulInputContext *hic);
+    //unsigned    hangul_ic_get_n_keyboards();
+    //const char* hangul_ic_get_keyboard_id(unsigned index_);
+    //const char* hangul_ic_get_keyboard_name(unsigned index_);
     hangul_ic_new: function(keyboard) {
         return Module["ccall"]("hangul_ic_new", "number", ["string"], [keyboard]);
     },
-    //bool hangul_ic_process(HangulInputContext *hic, int ascii);
-    hangul_ic_process: function(hic, ascii) {
-        return Module["ccall"]("hangul_ic_process", "number", ["number", "number"], [hic, ascii]);
-    },
-    //void hangul_ic_delete(HangulInputContext *hic);
     hangul_ic_delete: function(hic) {
         Module["ccall"]("hangul_ic_new", "number", ["number"], [hic]);
+    },
+    hangul_ic_process: function(hic, ascii) {
+        return Module["ccall"]("hangul_ic_process", "number", ["number", "number"], [hic, ascii]);
     },
     //bool hangul_ic_backspace(HangulInputContext *hic);
     hangul_ic_backspace: function(hic) {
@@ -13554,15 +13557,12 @@ var hangul = {
         Module["ccall"]("hangul_ic_reset", "number", ["number"], [hic]);
     },
 
-    //unsigned    hangul_ic_get_n_keyboards();
     hangul_ic_get_n_keyboards: function() {
         return Module["ccall"]("hangul_ic_get_n_keyboards", "number");
     },
-    //const char* hangul_ic_get_keyboard_id(unsigned index_);
     hangul_ic_get_keyboard_id: function(index_) {
         return Module["ccall"]("hangul_ic_get_keyboard_id", "string", ["number"], [index_]);
     },
-    //const char* hangul_ic_get_keyboard_name(unsigned index_);
     hangul_ic_get_keyboard_name: function(index_) {
         return Module["ccall"]("hangul_ic_get_keyboard_name", "string", ["number"], [index_]);
     },
