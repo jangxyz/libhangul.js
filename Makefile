@@ -11,21 +11,17 @@ OPTIONS = -s EXPORTED_FUNCTIONS="['_hangul_is_choseong','_hangul_is_jungseong','
 UGLIFY=./node_modules/.bin/uglifyjs
 
 
-
-libhangul:
-	cd libhangul && ./autogen.sh && $(CONFIGURE) configure --disable-nls
-
 hangul.js: libhangul $(SRC) pre.js post.js
 	$(CC) $(SRC) \
-		--pre-js pre.js \
-		--post-js post.js \
+		--pre-js  src/pre.js \
+		--post-js src/post.js \
 		-o hangul.js \
 		$(INCLUDE) $(DEFS) $(OPTIONS)
 
 hangul.min.js: libhangul $(SRC) pre.js post.js
 	$(CC) $(SRC) \
-		--pre-js pre.js \
-		--post-js post.js \
+		--pre-js  src/pre.js \
+		--post-js src/post.js \
 		-o hangul.O2.js \
 		-O2 \
 		$(INCLUDE) $(DEFS) $(OPTIONS)
@@ -33,3 +29,11 @@ hangul.min.js: libhangul $(SRC) pre.js post.js
 	@rm -f hangul.O2.js
 
 
+libhangul: libhangul/config.h
+
+libhangul/config.h:
+	cd libhangul && ./autogen.sh && $(CONFIGURE) configure --disable-nls
+
+
+clean:
+	cd libhangul && make clean && make distclean
