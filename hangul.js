@@ -13518,15 +13518,15 @@ function ucschars2str(ucschars) {
 
 
 var hangul = {
-    hangul_is_choseong:              function(ch) { return Module["ccall"]("hangul_is_choseong"             , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jungseong:             function(ch) { return Module["ccall"]("hangul_is_jungseong"            , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jongseong:             function(ch) { return Module["ccall"]("hangul_is_jongseong"            , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_choseong_conjoinable:  function(ch) { return Module["ccall"]("hangul_is_choseong_conjoinable" , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jungseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jungseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jongseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jongseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_syllable:              function(ch) { return Module["ccall"]("hangul_is_syllable"             , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jamo:                  function(ch) { return Module["ccall"]("hangul_is_jamo"                 , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_cjamo:                 function(ch) { return Module["ccall"]("hangul_is_cjamo"                , "number", ["number"], [ch.charCodeAt(0)]); }, 
+    hangul_is_choseong:              function(ch) { return Module["ccall"]("hangul_is_choseong"             , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jungseong:             function(ch) { return Module["ccall"]("hangul_is_jungseong"            , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jongseong:             function(ch) { return Module["ccall"]("hangul_is_jongseong"            , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_choseong_conjoinable:  function(ch) { return Module["ccall"]("hangul_is_choseong_conjoinable" , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jungseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jungseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jongseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jongseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_syllable:              function(ch) { return Module["ccall"]("hangul_is_syllable"             , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jamo:                  function(ch) { return Module["ccall"]("hangul_is_jamo"                 , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_cjamo:                 function(ch) { return Module["ccall"]("hangul_is_cjamo"                , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
 
     // ucschar hangul_jamo_to_cjamo(ucschar ch);
     hangul_jamo_to_cjamo: function(ch) { 
@@ -13536,12 +13536,13 @@ var hangul = {
     hangul_jamo_to_syllable: function(choseong, jungseong, jongseong) {
         return String.fromCharCode(Module["ccall"]("hangul_jamo_to_syllable", "number", ["number", "number", "number"], [choseong.charCodeAt(0), jungseong.charCodeAt(0), jongseong.charCodeAt(0)])); 
     },
-    //hangul_syllable_to_jamo 
-    //hangul_jamos_to_syllables 
-    //hangul_syllable_iterator_prev 
-    //hangul_syllable_iterator_next 
 
-    //int hangul_syllable_len(const ucschar* str, int max_len)
+    // void hangul_syllable_to_jamo(ucschar syllable, ucschar* choseong, ucschar* jungseong, ucschar* jongseong);
+    // int hangul_jamos_to_syllables(ucschar* dest, int destlen, const ucschar* src, int srclen);
+    // const ucschar* hangul_syllable_iterator_prev(const ucschar* str, const ucschar* begin);
+    // const ucschar* hangul_syllable_iterator_next(const ucschar* str, const ucschar* end);
+
+    // int hangul_syllable_len(const ucschar* str, int max_len)
     hangul_syllable_len: function(str, max_len) {
         return Module["ccall"]("hangul_syllable_len", "number", ["number", "number"], [str, max_len]);
     },
@@ -13589,7 +13590,7 @@ var hangul = {
     },
 
     //bool hangul_ic_is_empty(HangulInputContext *hic);
-    hangul_ic_is_empty:      function(hic) { return Module["ccall"]("hangul_ic_is_empty",      "number", ["number"], [hic]); },
+    hangul_ic_is_empty:      function(hic) { return Module["ccall"]("hangul_ic_is_empty",      "number", ["number"], [hic]) !== 0; },
     //bool hangul_ic_has_choseong(HangulInputContext *hic);
     hangul_ic_has_choseong:  function(hic) { return Module["ccall"]("hangul_ic_has_choseong",  "number", ["number"], [hic]); },
     //bool hangul_ic_has_jungseong(HangulInputContext *hic);

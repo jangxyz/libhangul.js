@@ -18,15 +18,15 @@ function ucschars2str(ucschars) {
 
 
 var hangul = {
-    hangul_is_choseong:              function(ch) { return Module["ccall"]("hangul_is_choseong"             , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jungseong:             function(ch) { return Module["ccall"]("hangul_is_jungseong"            , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jongseong:             function(ch) { return Module["ccall"]("hangul_is_jongseong"            , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_choseong_conjoinable:  function(ch) { return Module["ccall"]("hangul_is_choseong_conjoinable" , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jungseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jungseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jongseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jongseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_syllable:              function(ch) { return Module["ccall"]("hangul_is_syllable"             , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_jamo:                  function(ch) { return Module["ccall"]("hangul_is_jamo"                 , "number", ["number"], [ch.charCodeAt(0)]); }, 
-    hangul_is_cjamo:                 function(ch) { return Module["ccall"]("hangul_is_cjamo"                , "number", ["number"], [ch.charCodeAt(0)]); }, 
+    hangul_is_choseong:              function(ch) { return Module["ccall"]("hangul_is_choseong"             , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jungseong:             function(ch) { return Module["ccall"]("hangul_is_jungseong"            , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jongseong:             function(ch) { return Module["ccall"]("hangul_is_jongseong"            , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_choseong_conjoinable:  function(ch) { return Module["ccall"]("hangul_is_choseong_conjoinable" , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jungseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jungseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jongseong_conjoinable: function(ch) { return Module["ccall"]("hangul_is_jongseong_conjoinable", "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_syllable:              function(ch) { return Module["ccall"]("hangul_is_syllable"             , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_jamo:                  function(ch) { return Module["ccall"]("hangul_is_jamo"                 , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
+    hangul_is_cjamo:                 function(ch) { return Module["ccall"]("hangul_is_cjamo"                , "number", ["number"], [ch.charCodeAt(0)]) !== 0; }, 
 
     // ucschar hangul_jamo_to_cjamo(ucschar ch);
     hangul_jamo_to_cjamo: function(ch) { 
@@ -43,9 +43,9 @@ var hangul = {
     // const ucschar* hangul_syllable_iterator_next(const ucschar* str, const ucschar* end);
 
     // int hangul_syllable_len(const ucschar* str, int max_len)
-    hangul_syllable_len: function(str, max_len) {
-        return Module["ccall"]("hangul_syllable_len", "number", ["number", "number"], [str, max_len]);
-    },
+    //hangul_syllable_len: function(str, max_len) {
+    //    return Module["ccall"]("hangul_syllable_len", "number", ["number", "number"], [str, max_len]);
+    //},
 
     //
     // HangulInputcontext
@@ -90,7 +90,7 @@ var hangul = {
     },
 
     //bool hangul_ic_is_empty(HangulInputContext *hic);
-    hangul_ic_is_empty:      function(hic) { return Module["ccall"]("hangul_ic_is_empty",      "number", ["number"], [hic]); },
+    hangul_ic_is_empty:      function(hic) { return Module["ccall"]("hangul_ic_is_empty",      "number", ["number"], [hic]) !== 0; },
     //bool hangul_ic_has_choseong(HangulInputContext *hic);
     hangul_ic_has_choseong:  function(hic) { return Module["ccall"]("hangul_ic_has_choseong",  "number", ["number"], [hic]); },
     //bool hangul_ic_has_jungseong(HangulInputContext *hic);
