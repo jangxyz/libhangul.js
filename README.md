@@ -22,19 +22,19 @@
 
 1. libhangul 받기
 
-	git submodule init
-	git submodule update
+		git submodule init
+		git submodule update
 
 2. libhangul 설정하기
 
-	cd libhangul
-	./autogen
-	emconfigure ./configure --disable-nls
+		cd libhangul
+		./autogen
+		emconfigure ./configure --disable-nls
 
 3. hangul.js 빌드
 
-	make hangul.js
-	make hangul.min.js
+		make hangul.js
+		make hangul.min.js
 	
 
 ## API Reference
