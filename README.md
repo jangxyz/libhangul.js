@@ -39,6 +39,7 @@
 
 ## API Reference
 
+```javascript
 	/* 한글 글자 조작 함수 */
 	function hangul_is_choseong(c): 초성인지 확인하는 함수 
 	function hangul_is_jungseong(c): 중성인지 확인하는 함수 
@@ -66,13 +67,14 @@
 	function hangul_ic_select_keyboard(hic, id): HangulInputContext 의 자판 배열을 바꾸는 함수 
 	function hangul_ic_new(keyboard): HangulInputContext 오브젝트를 생성한다. 
 	function hangul_ic_delete(hic): HangulInputContext 를 삭제하는 함수 
-
+```
 
 더 자세한 내용은 [libhangul API 문서](http://libhangul.googlecode.com/git/doc/html/index.html)를 참고하세요.
 
 ## Example
 
 
+```javascript
 	> var h = hangul;
 
 	// 자음 기억(0x3131)
@@ -97,5 +99,5 @@
 
 	> h.hangul_jamo_to_syllable(String.fromCharCode(0x1100), String.fromCharCode(0x1173), String.fromCharCode(0x11af));
 	'글'
-
+```
 
